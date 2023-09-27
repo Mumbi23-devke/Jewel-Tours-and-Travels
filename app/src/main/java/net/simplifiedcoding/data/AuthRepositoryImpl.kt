@@ -37,4 +37,8 @@ class AuthRepositoryImpl @Inject constructor(
     override fun logout() {
         firebaseAuth.signOut()
     }
+
+    override fun booking() {
+        TODO("Not yet implemented")
+    }
 }

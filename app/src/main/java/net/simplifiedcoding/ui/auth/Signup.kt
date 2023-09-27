@@ -56,7 +56,7 @@ fun SignupScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                 }
                 .wrapContentSize()
         ) {
-            AuthHeader()
+            Text(text = "JEWEL TOURS AND TRAVELS")
         }
 
         TextField(
@@ -65,7 +65,7 @@ fun SignupScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                 name = it
             },
             label = {
-                Text(text = stringResource(id = R.string.name))
+                Text(text = stringResource(id = R.string.Name))
             },
             modifier = Modifier.constrainAs(refName) {
                 top.linkTo(refHeader.bottom, spacing.extraLarge)
@@ -87,7 +87,7 @@ fun SignupScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                 email = it
             },
             label = {
-                Text(text = stringResource(id = R.string.email))
+                Text(text = stringResource(id = R.string.Email))
             },
             modifier = Modifier.constrainAs(refEmail) {
                 top.linkTo(refName.bottom, spacing.medium)
@@ -109,7 +109,7 @@ fun SignupScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                 password = it
             },
             label = {
-                Text(text = stringResource(id = R.string.password))
+                Text(text = stringResource(id = R.string.Password))
             },
             modifier = Modifier.constrainAs(refPassword) {
                 top.linkTo(refEmail.bottom, spacing.medium)
@@ -137,7 +137,7 @@ fun SignupScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                 width = Dimension.fillToConstraints
             }
         ) {
-            Text(text = stringResource(id = R.string.signup), style = MaterialTheme.typography.titleMedium)
+            Text(text = stringResource(id = R.string.Signup), style = MaterialTheme.typography.titleMedium)
         }
 
 
@@ -158,6 +158,7 @@ fun SignupScreen(viewModel: AuthViewModel?, navController: NavHostController) {
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurface
         )
+
 
         signupFlow?.value?.let {
             when (it) {
@@ -186,13 +187,13 @@ fun SignupScreen(viewModel: AuthViewModel?, navController: NavHostController) {
     }
 }
 
-@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_NO)
-@Composable
-fun SignupScreenPreviewLight() {
-    AppTheme {
-        SignupScreen(null, rememberNavController())
-    }
-}
+//@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_NO)
+//@Composable
+//fun SignupScreenPreviewLight() {
+//    AppTheme {
+//        SignupScreen(null, rememberNavController())
+//    }
+//}
 
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable

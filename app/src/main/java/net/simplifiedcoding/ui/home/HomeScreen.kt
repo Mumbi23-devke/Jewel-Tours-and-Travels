@@ -47,7 +47,7 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
         )
 
         Image(
-            painter = painterResource(id = R.drawable.ic_person),
+            painter = painterResource(id = R.drawable.safari),
             contentDescription = stringResource(id = R.string.empty),
             modifier = Modifier.size(128.dp)
         )
@@ -64,7 +64,7 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                     .wrapContentHeight()
             ) {
                 Text(
-                    text = stringResource(id = R.string.name),
+                    text = stringResource(id = R.string.Name),
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.weight(0.3f),
                     color = MaterialTheme.colorScheme.onSurface
@@ -84,7 +84,7 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                     .wrapContentHeight()
             ) {
                 Text(
-                    text = stringResource(id = R.string.email),
+                    text = stringResource(id = R.string.Email),
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.weight(0.3f),
                     color = MaterialTheme.colorScheme.onSurface
@@ -108,20 +108,22 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(top = spacing.extraLarge)
-            ) {
+            )
+
+            {
                 Text(text = stringResource(id = R.string.logout))
             }
         }
     }
 }
 
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-fun HomeScreenPreviewLight() {
-    AppTheme {
-        HomeScreen(null, rememberNavController())
-    }
-}
+//@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
+//@Composable
+//fun HomeScreenPreviewLight() {
+//    AppTheme {
+//        HomeScreen(null, rememberNavController())
+//    }
+//}
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable

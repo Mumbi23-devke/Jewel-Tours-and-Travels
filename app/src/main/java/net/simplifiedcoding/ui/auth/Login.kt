@@ -3,14 +3,18 @@ package net.simplifiedcoding.ui.auth
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -25,6 +29,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import net.simplifiedcoding.R
 import net.simplifiedcoding.data.Resource
+import net.simplifiedcoding.navigation.ROUTE_BOOKING
 import net.simplifiedcoding.navigation.ROUTE_HOME
 import net.simplifiedcoding.navigation.ROUTE_LOGIN
 import net.simplifiedcoding.navigation.ROUTE_SIGNUP
@@ -56,7 +61,11 @@ fun LoginScreen(viewModel: AuthViewModel?, navController: NavController) {
                 }
                 .wrapContentSize()
         ) {
-            AuthHeader()
+            Text(text = "JEWEL TOURS AND TRAVELS",
+                modifier = Modifier
+                    .background(color = Color.Blue)
+
+            )
         }
 
 
@@ -66,7 +75,7 @@ fun LoginScreen(viewModel: AuthViewModel?, navController: NavController) {
                 email = it
             },
             label = {
-                Text(text = stringResource(id = R.string.email))
+                Text(text = stringResource(id = R.string.Email))
             },
             modifier = Modifier.constrainAs(refEmail) {
                 top.linkTo(refHeader.bottom, spacing.extraLarge)
@@ -88,7 +97,7 @@ fun LoginScreen(viewModel: AuthViewModel?, navController: NavController) {
                 password = it
             },
             label = {
-                Text(text = stringResource(id = R.string.password))
+                Text(text = stringResource(id = R.string.Password))
             },
             visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier.constrainAs(refPassword) {
@@ -115,8 +124,10 @@ fun LoginScreen(viewModel: AuthViewModel?, navController: NavController) {
                 end.linkTo(parent.end, spacing.extraLarge)
                 width = Dimension.fillToConstraints
             }
+
+
         ) {
-            Text(text = stringResource(id = R.string.login), style = MaterialTheme.typography.titleMedium)
+            Text(text = stringResource(id = R.string.Login), style = MaterialTheme.typography.titleMedium)
         }
 
 
@@ -137,6 +148,25 @@ fun LoginScreen(viewModel: AuthViewModel?, navController: NavController) {
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurface
         )
+
+        Text(
+            modifier = Modifier
+                .constrainAs(refTextSignup) {
+                    top.linkTo(refButtonLogin.bottom, spacing.medium)
+                    start.linkTo(parent.start, spacing.extraLarge)
+                    end.linkTo(parent.end, spacing.extraLarge)
+                }
+                .clickable {
+                    navController.navigate(ROUTE_BOOKING) {
+                        popUpTo(ROUTE_LOGIN) { inclusive = true }
+                    }
+                },
+            text = "Book a trip",
+            style = MaterialTheme.typography.bodyLarge,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.onSurface
+        )
+
 
         loginFlow?.value?.let {
             when (it) {
@@ -164,13 +194,6 @@ fun LoginScreen(viewModel: AuthViewModel?, navController: NavController) {
     }
 }
 
-@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_NO)
-@Composable
-fun LoginScreenPreviewLight() {
-    AppTheme {
-        LoginScreen(null, rememberNavController())
-    }
-}
 
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable

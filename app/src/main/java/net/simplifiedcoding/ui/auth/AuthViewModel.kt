@@ -48,4 +48,10 @@ class AuthViewModel @Inject constructor(
         _loginFlow.value = null
         _signupFlow.value = null
     }
+
+    fun booking(){
+        repository.booking()
+        _loginFlow.value = null
+        _signupFlow.value = null
+    }
 }
